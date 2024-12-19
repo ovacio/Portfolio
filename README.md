@@ -1,1 +1,1 @@
-Персональное Portfolio, написанноен на NextJs
+Персональное Portfolio, написанное на NextJs
