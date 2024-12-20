@@ -1,1 +1,1 @@
-Персональное Portfolio, написанное на NextJs
+Написанное персональное Portfolio с применением React, NextJs, Mantine UI
