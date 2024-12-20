@@ -1,13 +1,14 @@
 'use client'
-import { Card, Flex, Group, Text, Image } from '@mantine/core'
+import { Card, Flex, Text, Image, Spoiler, Stack } from '@mantine/core'
 import { IconFlask, IconStar, IconGitFork } from '@tabler/icons-react'
 import { useGetProjectsQuery } from '@/shared/api/hooks/useGetProjectsQuery'
 import styles from './page.module.css'
+import { PageSkeleton } from './page.skeleton'
 
 export default function Page() {
 	const { data, isLoading } = useGetProjectsQuery()
 
-	if (isLoading) return <Text>Loading...</Text>
+	if (isLoading) return <PageSkeleton />
 
 	const projects = (data?.data ?? []) as RepositoryInfo[]
 
@@ -19,7 +20,7 @@ export default function Page() {
 					Projects
 				</Text>
 			</Flex>
-			<Flex gap={15} className={styles.cards}>
+			<Flex gap={15} className={styles.cards} align="flex-start">
 				{projects.map((item) => (
 					<Card key={item.id} withBorder padding="lg" className={styles.card}>
 						<Card.Section>
@@ -30,14 +31,22 @@ export default function Page() {
 							/>
 						</Card.Section>
 
-						<Group justify="space-between" mt="xl" pl={15} pr={15}>
-							<Text component='a' href={item.html_url} fz="md" fw={700} className={styles.title}>
+						<Stack justify="space-between" mt="xl" mb="xl" pl={15} pr={15} >
+							<Text
+								component="a"
+								href={item.html_url}
+								fz="md"
+								fw={700}
+								className={styles.title}
+							>
 								{item.name}
 							</Text>
-							<Text mt="sm" mb="md" c="dimmed" fz="sm">
-								{item.description}
-							</Text>
-						</Group>
+							<Spoiler maxHeight={22}  showLabel="Развернуть" hideLabel="Свернуть" className={styles.spoiler}>
+								<Text c="dimmed" fz="sm">
+									{item.description}
+								</Text>
+							</Spoiler>
+						</Stack>
 						<Card.Section className={styles.footer}>
 							<Flex align="center" gap={5}>
 								<IconStar size={15} />

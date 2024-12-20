@@ -5,7 +5,7 @@
 .card {
   background-color: var(--mantine-color-body);
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
 }
 
 .footer {
@@ -20,4 +20,14 @@
     Greycliff CF,
     var(--mantine-font-family);
   line-height: 1;
+}
+
+.spoiler button {
+  color: var(--mantine-color-violet-4);
+}
+
+.spoiler button:hover,
+.icon_refresh:hover {
+  text-decoration: none;
+  color: var(--mantine-color-primary-3);
 }
