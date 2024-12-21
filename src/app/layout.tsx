@@ -14,7 +14,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body>
 				<ReactQueryClientProvider>
-					<MantineProvider >
+					<MantineProvider withCssVariables withGlobalClasses forceColorScheme='dark'>
 						<Header />
 						{children}
 					</MantineProvider>
